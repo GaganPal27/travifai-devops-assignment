@@ -10,7 +10,7 @@ let tasks = [
 ];
 
 app.get('/', (req, res) => {
-  res.send('Travifai DevOps Assignment ✅ Task API is running!');
+  res.send('Travifai DevOps Assignment ✅ Task API v2 is live and running!');
 });
 
 app.get('/tasks', (req, res) => {

@@ -29,3 +29,4 @@ jobs:
             npm install --omit=dev
             pm2 startOrReload ecosystem.config.js || pm2 start server.js --name travifai-task-api
             pm2 save
+            #

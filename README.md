@@ -41,6 +41,7 @@ Features:
 ---
 ## ⚙ Deployment
 1. Install Dependencies (on EC2)
+
 2. Clone Repo
 ```bash
 git clone https://github.com/GaganPal27/travifai-devops-assignment.git

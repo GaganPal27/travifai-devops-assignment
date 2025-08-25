@@ -1,41 +1,29 @@
-🚀 Travifai DevOps Assignment
-📌 Overview
+# 🚀 Travifai DevOps Assignment
+## 📌 Overview
 
 This project demonstrates deployment of a Node.js Task Manager API on AWS EC2, with automated deployments using GitHub Actions and optional S3 log storage.
-
 A simple frontend UI (/ui) is provided to add and remove tasks dynamically.
 
-⚙ Technologies Used
+---
+## ⚙ Technologies Used
 
-Node.js + Express → REST API
+- **Node.js + Express → REST API**
+- **PM2 → Process manager for Node.js**
+- **Nginx → Reverse proxy (port 80 → 3000)**
+- **AWS EC2 → Hosting environment**
+- **GitHub Actions → CI/CD pipeline**
+- **S3 → Log storage**
 
-PM2 → Process manager for Node.js
+## 🧩 How It Works (Flow)
 
-Nginx → Reverse proxy (port 80 → 3000)
-
-AWS EC2 → Hosting environment
-
-GitHub Actions → CI/CD pipeline
-
-S3 (Optional) → Log storage
-
-🧩 How It Works (Flow)
-
-Client interacts with API via /ui (HTML frontend).
-
-API routes available:
-
-GET /tasks → Fetch all tasks
-
-POST /tasks → Add a new task
-
-DELETE /tasks/:id → Remove a specific task
-
-API runs on EC2 (Node.js + PM2) behind Nginx reverse proxy.
-
-Logs are stored in /var/log/travifai/ and can sync to S3 bucket.
-
-GitHub Actions auto-deploys latest code to EC2 when changes are pushed to main.
+1. Client interacts with API via /ui (HTML frontend).
+2. API routes available:
+- **GET /tasks → Fetch all tasks**
+- **POST /tasks → Add a new task**
+- **DELETE /tasks/:id → Remove a specific task**
+3. API runs on EC2 (Node.js + PM2) behind Nginx reverse proxy.
+4. Logs are stored in /var/log/travifai/ and can sync to S3 bucket.
+5. GitHub Actions auto-deploys latest code to EC2 when changes are pushed to main.
 
 
 🖥 UI (Frontend)
@@ -97,6 +85,7 @@ curl -X POST http:/13.50.125.160/tasks \
 curl -X DELETE http:/13.50.125.160/tasks/1
 
 📁 Folder Structure
+```
 travifai-devops-assignment/
 ├── server.js
 ├── index.html
@@ -105,6 +94,6 @@ travifai-devops-assignment/
 │   └── workflows/
 │       └── deploy.yml
 └── README.md
-
+```
 Screenshot of s3 logs
 <img width="1920" height="784" alt="Screenshot (222)" src="https://github.com/user-attachments/assets/bf857a8e-3330-420e-9c4e-372eab436be4" />

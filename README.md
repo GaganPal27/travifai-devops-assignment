@@ -1,32 +1,92 @@
-# Travifai DevOps Assignment
+🚀 Travifai DevOps Assignment
+📌 Overview
 
-## Public URL
-http://13.50.125.160
+This project demonstrates deployment of a Node.js Task Manager API on AWS EC2, with automated deployments using GitHub Actions and optional S3 log storage.
+A simple frontend UI (/ui) is provided to add and remove tasks dynamically.
 
-## Application
-- Built with Node.js + Express
-- Endpoints:
-  - `/` → Health check / welcome message
-  - `/tasks` → Returns sample task list (JSON)
-  - `POST /tasks` → Add new task (in-memory)
+⚙ Technologies Used
+Node.js + Express → REST API
+PM2 → Process manager for Node.js
+Nginx → Reverse proxy (port 80 → 3000)
+AWS EC2 → Hosting environment
+GitHub Actions → CI/CD pipeline
+S3 (Optional) → Log storage
 
-## Deployment
-- Hosted on AWS EC2 (Ubuntu 22.04)
-- Nginx reverse proxy (port 80 → 3000)
-- PM2 for process management
+How It Works (Flow)
+1. Client interacts with API via /ui (HTML frontend).
+2. API routes available:
+  GET /tasks → Fetch all tasks
+  POST /tasks → Add a new task
+  DELETE /tasks/:id → Remove a specific task
+3. API runs on EC2 (Node.js + PM2) behind Nginx reverse proxy.
+4. Logs are written to /var/log/travifai/ and can sync to S3 bucket.
+5. GitHub Actions auto-deploys latest code to EC2 when changes are pushed to main.
 
-## CI/CD
-- GitHub Actions workflow runs on push to `main`
-- Steps:
-  1. SSH into EC2
-  2. Pull latest code
-  3. Install dependencies
-  4. Restart app with PM2
 
-### GitHub Secrets
-- `EC2_HOST` → EC2 Public IP
-- `EC2_USER` → ubuntu
-- `EC2_SSH_KEY` → private key contents
+🖥 UI (Frontend)
 
-## logs in s3
-- Logs from `/var/log/travifai/` synced to S3 bucket every 15 min
+Visit: http://13.50.125.160/ui
+
+Features:
+
+Add new tasks using a form
+View all tasks in a list
+Remove tasks using a Delete button
+Updates reflect immediately without page refresh (auto re-fetch).
+
+⚙ Deployment
+1. Install Dependencies (on EC2)
+sudo apt-get update -y
+sudo apt-get install -y nginx git curl
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs build-essential
+sudo npm i -g pm2
+
+2. Clone Repo
+git clone https://github.com/GaganPal27/travifai-devops-assignment.git
+cd travifai-devops-assignment
+npm install
+
+3. Start App with PM2
+pm2 start server.js --name travifai-task-api
+
+4. Configure Nginx Reverse Proxy
+Forward port 80 → 3000.
+
+5. Enable S3 Log Sync
+Logs from /var/log/travifai/ sync to s3://travifai-logs-gagan/.
+
+🔄 CI/CD (GitHub Actions)
+
+Workflow runs on every push to main.
+Steps:
+SSH into EC2
+Pull latest code
+Install dependencies
+Restart app via PM2
+GitHub Secrets
+EC2_HOST → Public IP of EC2
+EC2_USER → ubuntu
+EC2_SSH_KEY → private key contents
+
+📬 Sample API Requests
+1. Fetch Tasks
+curl http:/13.50.125.160/tasks
+
+2. Create New Task
+curl -X POST http:/13.50.125.160/tasks \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Learn CI/CD"}'
+
+3. Delete Task
+curl -X DELETE http:/13.50.125.160/tasks/1
+
+📁 Folder Structure
+travifai-devops-assignment/
+├── server.js
+├── index.html
+├── package.json
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+└── README.md

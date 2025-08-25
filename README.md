@@ -26,7 +26,7 @@ http://13.50.125.160
 ### GitHub Secrets
 - `EC2_HOST` → EC2 Public IP
 - `EC2_USER` → ubuntu
-- `EC2_SSH_KEY` → PEM private key contents
+- `EC2_SSH_KEY` → private key contents
 
 ## logs in s3
 - Logs from `/var/log/travifai/` synced to S3 bucket every 15 min

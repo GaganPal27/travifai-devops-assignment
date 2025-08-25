@@ -82,7 +82,7 @@ Logs from /var/log/travifai/ sync to s3://travifai-logs-gagan/.
 ## 📬 Sample API Requests
 1. Fetch Tasks
 ```bash
-curl http:/13.50.125.160/tasks
+curl http://13.50.125.160/tasks
 ```
 2. Create New Task
 ```bash

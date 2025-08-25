@@ -2,25 +2,40 @@
 📌 Overview
 
 This project demonstrates deployment of a Node.js Task Manager API on AWS EC2, with automated deployments using GitHub Actions and optional S3 log storage.
+
 A simple frontend UI (/ui) is provided to add and remove tasks dynamically.
 
 ⚙ Technologies Used
+
 Node.js + Express → REST API
+
 PM2 → Process manager for Node.js
+
 Nginx → Reverse proxy (port 80 → 3000)
+
 AWS EC2 → Hosting environment
+
 GitHub Actions → CI/CD pipeline
+
 S3 (Optional) → Log storage
 
-How It Works (Flow)
-1. Client interacts with API via /ui (HTML frontend).
-2. API routes available:
-  GET /tasks → Fetch all tasks
-  POST /tasks → Add a new task
-  DELETE /tasks/:id → Remove a specific task
-3. API runs on EC2 (Node.js + PM2) behind Nginx reverse proxy.
-4. Logs are written to /var/log/travifai/ and can sync to S3 bucket.
-5. GitHub Actions auto-deploys latest code to EC2 when changes are pushed to main.
+🧩 How It Works (Flow)
+
+Client interacts with API via /ui (HTML frontend).
+
+API routes available:
+
+GET /tasks → Fetch all tasks
+
+POST /tasks → Add a new task
+
+DELETE /tasks/:id → Remove a specific task
+
+API runs on EC2 (Node.js + PM2) behind Nginx reverse proxy.
+
+Logs are stored in /var/log/travifai/ and can sync to S3 bucket.
+
+GitHub Actions auto-deploys latest code to EC2 when changes are pushed to main.
 
 
 🖥 UI (Frontend)

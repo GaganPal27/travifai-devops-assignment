@@ -41,14 +41,6 @@ Features:
 ---
 ## ⚙ Deployment
 1. Install Dependencies (on EC2)
-```bash
-sudo apt-get update -y
-sudo apt-get install -y nginx git curl
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get install -y nodejs build-essential
-sudo npm i -g pm2
-```
-
 2. Clone Repo
 ```bash
 git clone https://github.com/GaganPal27/travifai-devops-assignment.git

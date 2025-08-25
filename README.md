@@ -90,3 +90,6 @@ travifai-devops-assignment/
 │   └── workflows/
 │       └── deploy.yml
 └── README.md
+
+Screenshot of s3 logs
+<img width="1920" height="784" alt="Screenshot (222)" src="https://github.com/user-attachments/assets/bf857a8e-3330-420e-9c4e-372eab436be4" />
